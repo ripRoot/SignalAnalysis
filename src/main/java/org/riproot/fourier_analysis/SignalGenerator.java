@@ -1,16 +1,21 @@
 package org.riproot.fourier_analysis;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+
+
 public class SignalGenerator {
     
-    public double[] generateSineWave(double amplitude, double frequency, int numSamples){
-        double[] sineWave = new double[numSamples];
-        double sampleRate = 44100.0;
-        double angularFreq = 2 * Math.PI * frequency;
+    public double[] generateAudioWave(File wavFile) {
+        /*
+         * Since I am using .wav files, and they are bytes by default, I will just be copying that data into a byte array. 
+         */
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        //BufferedInputStream in = new BufferedInputStream(wavFile);
 
-        for(int i = 0; i < numSamples; i++){
-            double time = i / sampleRate;
-            sineWave[i] = amplitude * Math.sin(angularFreq * time);
-        }   
-        return sineWave;
+        double[] temp = new double[64];
+        
+        return temp;
     }
+    
 }
