@@ -4,15 +4,16 @@
 
 package org.riproot.fourier_analysis;
 
+import java.io.File;
+import java.util.Arrays;
+
 public class SignalAnalyzer {
 
     public static void main(String[] args) {
-        double amplitude = 1.0;
-        double frequency = 1.0;
-        int numSamples = 10;
+        File wavFiles = new File("/home/elpir/git/fourier_analysis/audioFiles/carlitos_way_watchin.wav");
+        
+        byte[] yay = SignalGenerator.generateAudioWave(wavFiles);
 
-        //double[] sineWave = new SignalGenerator().generateSineWave(amplitude, frequency, numSamples);
-
-        //System.out.println(Arrays.toString(sineWave));
+        System.out.println(Arrays.toString(yay));
     }
 }
