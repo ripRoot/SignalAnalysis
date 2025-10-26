@@ -10,10 +10,10 @@ import java.util.Arrays;
 public class SignalAnalyzer {
 
     public static void main(String[] args) {
-        File wavFiles = new File("/home/elpir/git/fourier_analysis/audioFiles/carlitos_way_watchin.wav");
-        
-        byte[] yay = SignalGenerator.generateAudioWave(wavFiles);
+        File wavFiles = new File("/home/riple/gitProjects/SignalAnalysis/audioFiles/carlitos_way_watchin.wav");
+        SignalGenerator a = new SignalGenerator(wavFiles);
 
-        System.out.println(Arrays.toString(yay));
+        byte[] AudioBytes = a.getAllAudioBytes();
+        System.out.println(Arrays.toString(AudioBytes));
     }
 }

@@ -3,6 +3,7 @@ package org.riproot.fourier_analysis;
 //Imported Packages
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.nio.ByteBuffer;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -10,7 +11,10 @@ import javax.sound.sampled.AudioSystem;
 
 public class SignalGenerator {
     
-    public static byte[] generateAudioWave(File wavFile) {
+    private byte[] allAudioBytes;
+
+
+    public SignalGenerator(File wavFile) {
         /*
          * Since I am using .wav files, and they are bytes by default, I will just be copying that data into a byte array. 
          * 
@@ -38,13 +42,32 @@ public class SignalGenerator {
             }
 
             byte[] allAudioBytes = ba.toByteArray();
-            return allAudioBytes;
+            this.allAudioBytes = allAudioBytes;
 
         } catch (Exception e) {
+            allAudioBytes = null;
             e.getStackTrace();
         }
-
-        return null;
     }
-    
+
+    public byte[] getAllAudioBytes(){
+        return allAudioBytes;
+    }
+    /* 
+    public double[] toDoubleArray(){
+        * 
+         * What is the fault of turning my .wav file byte[] to a double[]? what do I lose?
+         * 1. Misinterpretation? 
+         * 
+         * 
+         *
+
+        //Create a ByteBuffer 4 wrapping the byte array
+        ByteBuffer buffer = ByteBuffer.wrap(allAudioBytes);
+
+        //Calculate the number of doubles in the byte array
+
+
+    }
+    */
 }
