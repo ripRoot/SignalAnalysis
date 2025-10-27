@@ -3,7 +3,6 @@ package org.riproot.fourier_analysis;
 //Imported Packages
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.nio.ByteBuffer;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -50,9 +49,31 @@ public class SignalGenerator {
         }
     }
 
+    public SignalGenerator(){
+        // Overloading constructions to make another object that only uses the generateSineWave function in it. 
+    }
+
     public byte[] getAllAudioBytes(){
         return allAudioBytes;
     }
+
+    
+    public double[] generateSineWave(double amplitude, double frequency, int numSamples) {
+        /*
+         * This function will create a sine wave with inputed (amplitude, freq, and numsmaples)
+         */
+        double[] sineWave = new double[numSamples];
+        double sampleRate = 44100.0; // also explain samplerate later
+        double angularFreq = 6.2 * frequency; // explain 6.2 later
+
+        for(int i = 0; i < numSamples; ++i) {
+            double time = (double)i / sampleRate;
+            sineWave[i] = amplitude * Math.sin(angularFreq * time);
+        }
+
+        return sineWave;
+    }
+
     /* 
     public double[] toDoubleArray(){
         * 
